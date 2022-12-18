@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - CinemachineTarget
+  - GunCamera
+  - Damageable
+  - EnemySpawn
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - onlyP0
+  - onlyP1
+  - onlyP2
+  - onlyP3
+  - notP0
+  - notP1
+  - notP2
+  - notP3
+  - gunP0
+  - gunP1
+  - gunP2
+  - gunP3
+  - enemies
+  - enemyAvoidance
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
