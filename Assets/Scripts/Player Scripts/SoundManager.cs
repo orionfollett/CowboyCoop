@@ -13,6 +13,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip rifleShot;
     public AudioClip successfulHit;
     public AudioClip successfulKill;
+    public AudioClip enemyAttack;
 
 
     public void Awake()
@@ -32,6 +33,7 @@ public class SoundManager : MonoBehaviour
         audioClips.Add("rifleshot", rifleShot);
         audioClips.Add("successfulHit", successfulHit);
         audioClips.Add("successfulKill", successfulKill);
+        audioClips.Add("enemyAttack", enemyAttack);
     }
 
     public void PlaySound(string audioDirection, string soundName) {
@@ -44,6 +46,11 @@ public class SoundManager : MonoBehaviour
         else {
             Debug.Log("Sound not found: " + soundName);
         }
+    }
+
+    public void PlaySoundMessage(string soundName)
+    {
+        PlaySound("m", soundName);
     }
 
     public float ConvertDirectionToStereo(string audioDirection) {

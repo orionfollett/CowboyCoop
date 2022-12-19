@@ -10150,7 +10150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9059be30674446b4c957e4e5020cf5ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10000
+  health: 3
   respawnTime: 3
   damageScreenSpeed: 5
   damageScreen: {fileID: 5298805256876100246}

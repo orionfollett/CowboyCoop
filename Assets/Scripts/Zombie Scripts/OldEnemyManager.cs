@@ -11,12 +11,14 @@ public class EnemyManager : MonoBehaviour
     private int enemyId = 0;
     private Dictionary<int, GameObject> enemies;
     private GameObject[] _spawnPoints;
+    private GameObject[]  _playerList;
     private int spawnIndex = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         _spawnPoints = GameObject.FindGameObjectsWithTag("EnemySpawn");
+        _playerList = GameObject.FindGameObjectsWithTag("Player");
         enemies = new Dictionary<int, GameObject>();
         InvokeRepeating("SpawnEnemy", 1, spawnDelay);
     }
@@ -29,7 +31,7 @@ public class EnemyManager : MonoBehaviour
             GameObject enemy = Instantiate(enemyPrefab, spawnPosition, new Quaternion(0, 0, 0, 0));
             enemy.GetComponent<EnemyDeath>().manager = this;
             enemy.GetComponent<EnemyDeath>().id = enemyId;
-            enemy.SetActive(true);
+            enemy.GetComponent<EnemyMovement>().playerList = new List<GameObject>(_playerList);
             enemies.Add(enemyId, enemy);
             enemyId++;
 

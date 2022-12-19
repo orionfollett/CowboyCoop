@@ -40,7 +40,7 @@ public class PlayerStats : MonoBehaviour
     }
 
     public void ReceiveZombieDamage(int damage) {
-        Debug.Log("hit by zombie");
+        
         health -= damage;
         if (health == 0)
         {

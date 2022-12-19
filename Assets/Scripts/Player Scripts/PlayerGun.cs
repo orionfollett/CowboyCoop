@@ -139,13 +139,12 @@ public class PlayerGun : MonoBehaviour
                     StartCoroutine(ShowHitmarker());
                 }
                 else if (hitObject.tag == "Damageable") {
-                    hitObject.GetComponent<Damageable>().Damage(damage);
+                    hitObject.SendMessage("Damage", damage);
                     StartCoroutine(DelayPlaySound("successfulHit", 0.20f));
                     StartCoroutine(ShowHitmarker());
                 }
                 else {
-                    Debug.Log("Warning: player gun raycast detected something that is not a player!");
-                    Debug.Log(hitObject.name);
+                    Debug.Log("Warning: player gun raycast detected something that is not a player: " + hitObject.name);
                 }
 
                 

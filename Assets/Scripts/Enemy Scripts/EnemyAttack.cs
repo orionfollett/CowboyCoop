@@ -4,43 +4,28 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public BoxCollider attackCollider;
-    //public Animator animator;
-
     public int damage = 1;
-    public float attackWindow = 0.2f;
-    public float attackRange = 2.0f;
-
-    private bool isAttacking = false;
+    
+    private Damageable _enemyHealth;
+    private GameObject _managers;
 
     private void Start()
     {
-        attackCollider.center = new Vector3(0, 0, -0.25f + attackRange / 2);
-        attackCollider.size = new Vector3(1, 1, attackRange);
-        attackCollider.enabled = false;
+        _enemyHealth = GetComponent<Damageable>();
+        _managers = GameObject.FindGameObjectWithTag("GameController");
     }
 
-    //called by animation event
-    public void Attack() {
-        Debug.Log("ATTACK!");
-        isAttacking = true;
-        attackCollider.enabled = true;
-        StartCoroutine(CancelAttack(attackWindow));
-    }
-
-    IEnumerator CancelAttack(float time) {
-        yield return new WaitForSeconds(time);
-        isAttacking = false;
-        attackCollider.enabled = false;
-    }
-
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (isAttacking) {
-            isAttacking = false;
-            other.SendMessage("ReceiveZombieDamage", damage);
-            attackCollider.enabled = false;
-        }   
+        if (other.gameObject.tag == "Player")
+        {
+            other.gameObject.SendMessage("ReceiveZombieDamage", damage);
+        }
 
+        _managers.SendMessage("PlaySoundMessage", "enemyAttack");
+
+        //destroy this enemy properly
+        _enemyHealth.health = 0;
+        _enemyHealth.Damage(1);
     }
 }

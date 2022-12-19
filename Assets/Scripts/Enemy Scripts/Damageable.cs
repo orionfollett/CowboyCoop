@@ -11,6 +11,4 @@ public class Damageable : MonoBehaviour
             SendMessage("IAmDead");
         }
     }
-
-
 }

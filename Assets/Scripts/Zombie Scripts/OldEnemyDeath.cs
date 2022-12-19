@@ -8,7 +8,7 @@ public class EnemyDeath : MonoBehaviour
     public int id;
 
     void IAmDead() {
-        manager.DeleteDeadEnemy(id);
         Destroy(gameObject);
+        manager.DeleteDeadEnemy(id);
     }
 }
