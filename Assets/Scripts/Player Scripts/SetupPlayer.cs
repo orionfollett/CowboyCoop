@@ -36,6 +36,7 @@ public class SetupPlayer : MonoBehaviour
     private int gunLayer;
     private int uiLayer;
 
+
     void Start()
     {   
         playerName = "Player" + playerId.ToString();

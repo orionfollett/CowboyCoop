@@ -48,4 +48,9 @@ public class PlayerStats : MonoBehaviour
             _playerRouter.ReceiveRespawn(respawnTime);
         }
     }
+
+    public void HealthPickup(int healthRecieved) {
+        health += healthRecieved;
+        health = Mathf.Clamp(health, 0, _startingHealth);
+    }
 }

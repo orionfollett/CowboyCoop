@@ -8,6 +8,9 @@ public class EnemyMovement : MonoBehaviour
 
     private NavMeshAgent _agent;
     private GameObject [] _playerList;
+    private float counter = 0.0f;
+
+    public Vector3 destination;
 
     // Start is called before the first frame update
     void Start()
@@ -16,10 +19,25 @@ public class EnemyMovement : MonoBehaviour
         _playerList = GameObject.FindGameObjectsWithTag("Player");
     }
 
+
+
     // Update is called once per frame
     void Update()
     {
-        InvokeRepeating("SetEnemyDestination", 0, 0.1f);
+        counter += Time.deltaTime;
+        if (counter > 0.1f) {
+            counter = 0.0f;
+
+
+            if (_playerList.Length == 0)
+            {
+                _playerList = GameObject.FindGameObjectsWithTag("Player");
+            }
+
+            SetEnemyDestination();
+        }
+        //InvokeRepeating is a huge drag
+        //InvokeRepeating("SetEnemyDestination", 0, .5f);
     }
 
     void SetEnemyDestination()
@@ -34,6 +52,7 @@ public class EnemyMovement : MonoBehaviour
             }
         }
         _agent.SetDestination(dest);
+        destination = dest;
     }
 
 }

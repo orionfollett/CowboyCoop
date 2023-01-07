@@ -7,12 +7,15 @@ using UnityEngine.InputSystem.Users;
 public class PlayerManager : MonoBehaviour
 {
     public GameObject playerPrefab;
-    public int playerCount = 2;
+    public int playerCount = 0;
 
     readonly public List<GameObject> players = new List<GameObject>();
    
     void Awake()
     {
+        GameObject playerConfigs = GameObject.FindGameObjectWithTag("PlayerConfigs");
+        playerCount = playerConfigs.GetComponent<ConfigurePlayerConfig>().playerCount;
+        
         for (int i = 0; i < playerCount; i++) {
             GameObject player = Instantiate(playerPrefab, new Vector3(i, 0, 0), Quaternion.identity);
             player.GetComponent<SetupPlayer>().playerId = i;
