@@ -94,7 +94,6 @@ public class PlayerGun : MonoBehaviour
 
         if (_input.reload && _ableToReload)
         {
-            Debug.Log("RELOAD");
             _ableToReload = false;
             Reload();
         }
@@ -195,5 +194,9 @@ public class PlayerGun : MonoBehaviour
     //    obj.position = end;
     //}
 
-
+    public void AmmoPickup(int ammoRecieved)
+    {
+        mags += ammoRecieved / maxAmmoInMag;
+        ammoText.SetText(ammoLeft.ToString() + "/" + mags.ToString());
+    }
 }
