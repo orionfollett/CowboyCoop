@@ -7,6 +7,8 @@ using StarterAssets;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
 using UnityEngine.Audio;
+using Cinemachine.PostFX;
+using UnityEngine.Rendering.Universal;
 
 public class SetupPlayer : MonoBehaviour
 {
@@ -19,6 +21,7 @@ public class SetupPlayer : MonoBehaviour
     public Camera mainCamera;
     public Camera gunCamera;
     public CinemachineVirtualCamera playerFollowCamera;
+    public UniversalAdditionalCameraData mainCameraUDP;
 
     [Header("Player Objects")]
     public GameObject gunAndArms;
@@ -88,6 +91,11 @@ public class SetupPlayer : MonoBehaviour
         }
         mainMask = RemoveLayerToLayerMask(mainMask, notLayer);
         mainCamera.cullingMask = mainMask;
+
+        //set up post processing layers for main camera
+        LayerMask onlyMask = GetNothingLayer();
+        onlyMask = AddLayerToLayerMask(onlyMask, playerLayer);
+        mainCameraUDP.volumeLayerMask = onlyMask;
 
         //gun camera
         LayerMask gunMask = GetNothingLayer();

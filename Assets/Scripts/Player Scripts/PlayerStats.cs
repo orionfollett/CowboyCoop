@@ -6,6 +6,7 @@ public class PlayerStats : MonoBehaviour
 {
     [Header("Variables")]
     public int health = 100;
+    public int downs = 1;
     public int respawnTime = 3;
     public float damageScreenSpeed = 10f;
 
