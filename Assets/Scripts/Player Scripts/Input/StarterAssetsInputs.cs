@@ -18,6 +18,7 @@ namespace StarterAssets
 		public bool aim;
 		public bool pause = false;
 		public bool reload;
+		public bool interact;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -68,6 +69,11 @@ namespace StarterAssets
         public void OnReload(InputValue value)
         {
             ReloadInput(value.isPressed);
+        }
+
+        public void OnInteract(InputValue value)
+        {
+			InteractInput(value.isPressed);
         }
 #endif
 
@@ -148,6 +154,18 @@ namespace StarterAssets
 				reload = false;
 			}
 		}
+
+        public void InteractInput(bool interactInput)
+        {
+            if (!pause)
+            {
+                interact = interactInput;
+            }
+            else
+            {
+                interact = false;
+            }
+        }
 
         private void OnApplicationFocus(bool hasFocus)
 		{

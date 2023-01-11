@@ -4113,7 +4113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &839092941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7339,7 +7339,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1571722571}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1571722574
 Camera:
   m_ObjectHideFlags: 0
@@ -8455,8 +8455,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ad9d411853813d449529dbde06d98c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxEnemies: 50
-  spawnDelay: 0.5
+  maxEnemies: 0
+  spawnDelay: 1
   enemyPrefab: {fileID: 7628840307462705450, guid: 94cfa5edff74bf6498ba09372e07998b, type: 3}
 --- !u!1001 &1846632813
 PrefabInstance:

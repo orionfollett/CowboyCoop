@@ -3524,7 +3524,7 @@ Transform:
   m_GameObject: {fileID: 4547982042739962299}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.367, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5916849020048962102}
@@ -3541,7 +3541,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7047030087806096569
 MonoBehaviour:
@@ -10042,7 +10042,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5916849020048962102}
   - component: {fileID: 6437630105858779270}
-  - component: {fileID: 6437630105858779275}
   - component: {fileID: 3870669202006819452}
   - component: {fileID: 6437630105858779264}
   - component: {fileID: 4544787714380575083}
@@ -10052,6 +10051,7 @@ GameObject:
   - component: {fileID: 1914532401317419218}
   - component: {fileID: 296380319496241493}
   - component: {fileID: 3054717595786321994}
+  - component: {fileID: 477023058614085722}
   m_Layer: 7
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -10095,23 +10095,6 @@ CharacterController:
   m_SkinWidth: 0.02
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0.93, z: 0}
---- !u!114 &6437630105858779275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6437630105858779276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dafdd57591c88a48904eb3184b86535, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pushLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  canPush: 0
-  strength: 1.1
 --- !u!114 &3870669202006819452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10143,6 +10126,7 @@ MonoBehaviour:
   CinemachineCameraTarget: {fileID: 1702665554380673495}
   TopClamp: 90
   BottomClamp: -90
+  isStuck: 0
 --- !u!114 &6437630105858779264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10297,6 +10281,7 @@ MonoBehaviour:
   aim: 0
   pause: 0
   reload: 0
+  interact: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
@@ -10313,9 +10298,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  downs: 1
+  downCounter: 0
+  maxDowns: 3
+  downTimeTillDeath: 10
   respawnTime: 3
   damageScreenSpeed: 5
+  isDown: 0
   damageScreen: {fileID: 5298805256876100246}
 --- !u!114 &1722783137817362071
 MonoBehaviour:
@@ -10376,6 +10364,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &477023058614085722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6437630105858779276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f2afec93e225c428d5ad1582f87ac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reviveRange: 5
+  reviveTimeLength: 3
+  cameraTransform: {fileID: 3051521969107995161}
+  hitableLayerMask:
+    serializedVersion: 2
+    m_Bits: 960
 --- !u!1 &6466530297615311166
 GameObject:
   m_ObjectHideFlags: 0
