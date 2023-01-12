@@ -19,7 +19,6 @@ public class RespawnAndKillPlayer : MonoBehaviour
     }
 
     public void Spawn() {
-        //playerCapsule.SetActive(false);
         respawnOrigin = GameObject.FindGameObjectWithTag("Respawn").transform;
         _respawnPoints = new List<Transform>(GameObject.FindGameObjectWithTag("Respawn").GetComponentsInChildren<Transform>());
         playerCapsule.transform.position = GetRandomSpawnPoint() + new Vector3(GetComponent<SetupPlayer>().playerId, 0, 0);
@@ -29,9 +28,12 @@ public class RespawnAndKillPlayer : MonoBehaviour
     public void Respawn(int respawnTime)
     {
         playerCapsule.transform.position = GetRandomSpawnPoint();
-        playerCapsule.SetActive(false);
-        StartCoroutine(ShowDeathCanvas(respawnTime * .2f, respawnTime * .7f, respawnTime * .1f));
         StartCoroutine(DelayRespawn(respawnTime));
+    }
+
+    public void KillMe() {
+        playerCapsule.SetActive(false);
+        StartCoroutine(ShowDeathCanvas(1, 5, 1));
     }
 
     public Vector3 GetRandomSpawnPoint() 

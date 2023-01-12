@@ -105,6 +105,9 @@ public class PlayerStats : MonoBehaviour
         health = _startingHealth;
         _controller.isStuck = false;
         isDown = false;
-        _playerRouter.ReceiveRespawn(respawnTime);
+
+
+        //_playerRouter.ReceiveRespawn(0);
+        gameObject.SendMessageUpwards("KillMe");
     }
 }
